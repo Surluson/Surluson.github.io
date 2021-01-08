@@ -25,3 +25,19 @@
 // Pages
 @import "pages/landing";
 @import "pages/posts";
+
+img[src*="#three_fourths_width"] {
+    text-align: center;
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img[src*="#one_fourths_width"] {
+    text-align: center;
+    width: 24.9%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
