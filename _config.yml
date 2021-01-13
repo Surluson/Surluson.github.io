@@ -23,6 +23,19 @@ author:
   url:               Surluson.github.io
   email:             arnisturlu@gmail.com
 
+markdown: kramdown
+kramdown:  
+  auto_ids: true
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  input: GFM
+  hard_wrap: false
+  footnote_nr: 1
+  show_warnings: false
+  enable_coderay: false
+
+
 plugins:
   - jekyll-coffeescript
   - jekyll-paginate
