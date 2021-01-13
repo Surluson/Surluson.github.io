@@ -24,7 +24,7 @@ I will try to explain most terms I deem are not fundamental knowledge in those t
 Many might be more familiar with the Principal Component Analysis (PCA), which is built on the strength of the SVD.  
 The SVD is a matrix decomposition method, which break single matrices down into a product of matrices, which offer advantages in a range of problems.  
 Three matrices are produced with the SVD, **U**, **&Sigma;**, and **V<sup>T</sup>** according to the following formula:  
-$$ \mathbf{A} = \mathbf{U\Sigma V^T} $$
+++ \mathbf{A} = \mathbf{U\Sigma V^T} ++
 where $\mathbf{A}$ is the original matrix.
 
 ## Two Apple Vendors
