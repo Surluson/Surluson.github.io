@@ -3,7 +3,7 @@ layout: post
 title: Visualizing the Singular Value Decomposition (SVD)
 truncated_preview: true
 excerpt_separator: <!--more-->
-use_math: true
+usemathjax: true
 ---
 
 <div class="message">
