@@ -17,3 +17,5 @@ vendor/
 
 # custom
 *.bat
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
