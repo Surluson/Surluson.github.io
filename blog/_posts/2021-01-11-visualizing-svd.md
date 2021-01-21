@@ -6,6 +6,8 @@ excerpt_separator: <!--more-->
 usemathjax: true
 ---
 
+![apple_pie](/blog/visualize_svd_extra/apple_pie.png "A great looking apple pie")
+
 <div class="message">
     Recently I published a paper utilizing the Singular Value
     Decomposition (SVD), a well-known matrix decomposition method.
@@ -16,9 +18,14 @@ usemathjax: true
 
 <!--more-->
 
-## Prerequisites
+## Introduction & Prerequisites
 This post will require some understanding of *Julia*, *matplotlib* and Linear Algebra.  
-I will try to explain most terms I deem are not fundamental knowledge in those three categories.
+I've broken this blog into three separate parts, each focusing on a different element:  
+1) Some linear algebra knowledge that I think will be necessary.
+2) The problem I've come up with
+3) The visualization using *Julia*'s PyPlot package (which is built on the *matplotlib* package from Python)  
+
+The notebook I used for the code is available [<b>HERE</b>]({% post_url 2021-01-11-svd-notebook %}).
 
 ## The Singular Value Decomposition
 Many might be more familiar with the Principal Component Analysis (PCA), which is built on the strength of the SVD.  
@@ -102,6 +109,15 @@ or simply
 $$  
 \mathbf{T}\vec{a}=\vec{q}  
 $$
+
+The taste rating John assigned to each apple for the recipes is
+
+$$
+\mathbf{T} = \begin{bmatrix}
+26 & 74 \\
+66 & 34 \\
+\end{bmatrix}
+$$
  
 Before we continue, lets change variables slightly and work with *changes* in amount of apples, and *changes* in quality of the recipes.  
 
@@ -110,6 +126,7 @@ $$
 $$
 
 Now, \\(a_j^\ast\\) is the deviation from the number of apples (of species *j*) he used before, and \\(q_i^\ast\\) is the deviation of the quality of pie (from recipe *i*) from before.
+This allows us to monitor the changes in his current recipes rather than looking at the absolute number of apples in the recipes.
 
 We can get all the information we need using the matrix **T** by utilizing the strength of the SVD.  
 Lets imagine that the change in the amount of apples is a unit circle in a 2-D plane.
