@@ -6,7 +6,7 @@ excerpt_separator: <!--more-->
 usemathjax: true
 ---
 
-![apple_pie](/blog/visualize_svd_extra/apple_pie.png "A great looking apple pie")
+![apple_pie](/blog/visualize_svd_extra/apple_pie.png "A "great" looking apple pie")
 
 <div class="message">
     Recently I published a paper utilizing the Singular Value
@@ -21,24 +21,26 @@ usemathjax: true
 ## Introduction & Prerequisites
 This post will require some understanding of *Julia*, *matplotlib* and Linear Algebra.  
 I've broken this blog into three separate parts, each focusing on a different element:  
-1) Some linear algebra knowledge that I think will be necessary.
-2) The problem I've come up with
+
+1) Some linear algebra knowledge that I think will be necessary.  
+2) The problem I've come up with  
 3) The visualization using *Julia*'s PyPlot package (which is built on the *matplotlib* package from Python)  
 
-The notebook I used for the code is available [<b>HERE</b>]({% post_url 2021-01-11-svd-notebook %}).
+The notebook I used for the code is available [<b>HERE</b>]({% post_url 2021-01-11-svd-notebook %}) if that is all you're interested in.
 
 ## The Singular Value Decomposition
-Many might be more familiar with the Principal Component Analysis (PCA), which is built on the strength of the SVD.  
-The SVD is a matrix decomposition method, which break single matrices down into a product of matrices, which offer advantages in a range of problems.  
-In the following explanation I'll review some key ideas for the *reduced* SVD method (which differes from the *full* SVD method slightly).
+The SVD is a common matrix decomposition method.
+Matrix decomposition methods usually break single matrices down into a product of matrices, which offer advantages in a range of problems.  
+In the following explanation I'll review some key ideas for the *reduced* SVD method (which differes from the *full* SVD method slightly).  
+
 Three matrices are produced with the SVD, **U**, **&Sigma;**, and **V<sup>T</sup>** according to the following formula:  
 \begin{equation}
     \label{eq:svd}
     \mathbf{A} = \mathbf{U\Sigma V^T}
 \end{equation}
-where \\(\mathbf{A} \in \mathbb{R}^{m \times n}\\) represents the original matrix with rank \\(r\\).  
-\\(\mathbf{U} \in \mathbb{R}^{m \times r}\\) contains the *left singular vectors* of **A** (left because it is on the left side in formula \eqref{eq:svd}), and similarly, \\(\mathbf{V} \in \mathbb{R}^{r \times n}\\) contains the *right singular vectors* of **A**.  
-Both the singular vectors in \\(\mathbf{U}\\)  and \\(\mathbf{V}\\) are orthogonal to each other, respectively, and function as a new orthonormal basis for **A**.
+where \\(\mathbf{A} \in \mathbb{R}^{m \times n}\\) represents the matrix (with rank \\(r\\)) which is broken down.  
+\\(\mathbf{U} \in \mathbb{R}^{m \times r}\\) contains the *left singular vectors* of **A** (left because it is on the left side in formula \eqref{eq:svd}), and similarly, \\(\mathbf{V} \in \mathbb{R}^{n \times r}\\) contains the *right singular vectors* of **A**.  
+Both the singular vectors in \\(\mathbf{U}\\)  and \\(\mathbf{V}\\) are orthogonal to each other, respectively, and function as a new orthonormal basis for **A**.  
 \\(\mathbf{\Sigma} \in \mathbb{R}^{r \times r}\\) is a diagonal matrix, with the *singular values* of **A** in a non-decreasing order on its' diagonal.
 The singular values of **A** determine which singular vectors are the most important.  
 
@@ -50,9 +52,12 @@ To explain the importance better, we can think of equation \eqref{eq:svd} a bit 
     + \ldots
     + \vec{u}_r\sigma_r\vec{v}^{\,T}_r
 \end{equation}
-where **A** is now decomposed into \\(r\\) rank-1 matrices (\\(r\\) is the rank of **A**) and the \\(\sigma_i\\)'s are the singular values and can be thought of a coefficients for each rank-1 matrix in equation \eqref{eq:svd_rank1mats}. Conveniently, the SVD automatically sorts the singular values such that \\(\sigma_1\\) is the largest and \\(\sigma_r\\) is the smallest.  
+where **A** is now decomposed into \\(r\\) rank-1 matrices (again, \\(r\\) is the rank of **A**) and the \\(\sigma_i\\)'s are the singular values and can be thought of a coefficients for each rank-1 matrix in equation \eqref{eq:svd_rank1mats}. 
+We call the components in Eqn. \eqref{eq:svd_rank1mats} "rank-1 matrices" because each component is a matrix produced by matrix multiplying two column vectors (although one is transposed) together, and column vectors have exactly a rank of one.  
+Conveniently, the SVD automatically sorts the singular values such that \\(\sigma_1\\) is the largest and \\(\sigma_r\\) is the smallest.  
+The SVD can be used in data compression using this fact, because one could get rid of the components with the smallest \\(\sigma\\)'s, knowing that when summing up the rank-1 matrices we've gotten rid of the least important components.  
 
-Looking at this problem geometrically, I'll start with an observation that was brough to my attention in *Numerical Linear Algebra* by Trefethen & Bau III [^fn-numlinalg]:
+Now, I'll convey a geometrical observation that was brough to my attention in *Numerical Linear Algebra* by Trefethen & Bau III [^fn-numlinalg] which will become important later on in this post:
 <div class="message">
 The image of the unit sphere under any <i>m</i> x <i>n</i> matrix is a hyperellipse
 </div>
@@ -60,20 +65,20 @@ To simplify this slightly (mostly because I don't want to deal with *m* dimensio
 <div class="message">
 The image of the unit circle under any <i>m</i> x 2 matrix is an ellipse
 </div>
-Now, the singular values, \\(\sigma_1\\) and \\(\sigma_2\\) (we only have two singular values because the rank of a <i>m</i> x 2 matrix is 2, given the matrix isn't singular) are the lengths of the principal semiaxes of the ellipse. The direction of the principal semiaxes are determined by \\(\vec{u}_1\\) and \\(\vec{u}_2\\) as we shall see later on.  
+In this context, the singular values, \\(\sigma_1\\) and \\(\sigma_2\\) (we only have two singular values if we assume we are working with a <i>m</i> x 2 matrix and the matrix isn't singular) are the lengths of the principal semiaxes of the ellipse and the direction of the principal semiaxes are determined by \\(\vec{u}_1\\) and \\(\vec{u}_2\\) as we shall see later on.  
 
 With this knowledge, lets pose a problem and utilize the Singular Value Decomposition to get some insight into it and visualize the results!
 
 ## John Baker the Apple Pie Maker
 John is well known for his two apple pie recipes.
 Both recipes use 3 Gregarious Green apples and 5 Reliable Red apples, which he gets from his apple trees on his farm.
-John has 3 Gregarious Green apple trees and 5 Reliable Red apple trees, mimicing the apple ratio needed in his two recipes.
+John has 3 Gregarious Green apple trees and 5 Reliable Red apple trees, mimicking the number of apples needed in his two recipes.
 His income consists of his apple pie profits and selling the excess apples which he doesn't use in his baking.  
 Recently, the demand for his Gregarious Green apples has skyrocketed while he has been having problems selling his Reliable Red apples.
 John wants to see whether he can reduce the amount of Reliable Red apples in his recipes and still have apple pies of a similar quality, so he can increase the number of Gregarious Green apple trees without increasing the Reliable Red ones.
 
 John is an expert when it comes to taste, and he has been able to quantify the tastiness of the two apples in each of his two recipes.
-His trained tounge provides a continuous tastiness rating from \\(0-100\\), which will be of great help to us.
+His trained tounge provides a continuous tastiness rating which will be of great help to us.
 Furthermore, John has been able to rate the quality of his apple pies as well.
 
 Lets now set John's problem up as a system of linear equations and introduce John's ratings for his apples and pies:
@@ -125,16 +130,18 @@ $$
 \mathbf{T}\vec{a}^\ast = \vec{q}^\ast
 $$
 
-Now, \\(a_j^\ast\\) is the deviation from the number of apples (of species *j*) he used before, and \\(q_i^\ast\\) is the deviation of the quality of pie (from recipe *i*) from before.
-This allows us to monitor the changes in his current recipes rather than looking at the absolute number of apples in the recipes.
+Now, \\(a_j^\ast\\) is the deviation from the number of apples (of species *j*) he used before, and \\(q_i^\ast\\) is the deviation in the quality of pie (from recipe *i*) from before.
+This allows us to monitor the changes in John's current recipes rather than looking at the absolute number of apples in the recipes.
 
-We can get all the information we need using the matrix **T** by utilizing the strength of the SVD.  
+We can get all the information about the effects of changes in the recipes by looking at the matrix **T** using the SVD.
 Lets imagine that the change in the amount of apples is a unit circle in a 2-D plane.
-According to the observation I mentioned before, we know that when a unit circle is right matrix multiplied by a matrix, the outcome is an ellipse.  
+Now the observation I mentioned before becomes relevant because we know that when a unit circle is right matrix multiplied by a matrix, the outcome is an ellipse.  
 
 Lets now write up some Julia code, using the PyPlot package which is built on the matplotlib library:
 
 ## Visualizing the SVD
+All the code is written in Julia v.1.5.3 using the <em>PyPlot</em> package (along with some other minor packages).
+
 Before we look at the visualization, lets define two helper functions:
 {% highlight julia linenos %}
 function plot_singular_vectors(V_or_U, ax, width, head_length, 
@@ -152,7 +159,7 @@ function plot_singular_vectors(V_or_U, ax, width, head_length,
 end
 {% endhighlight %}
 
-<em>plot_singular_vectors</em> plots either the \\(\vec{u}\\) or the \\(\vec{v}\\) singular vectors as two arrows from the origin.
+We will use <em>plot_singular_vectors</em> to plot either the \\(\vec{u}\\) or the \\(\vec{v}\\) singular vectors as two arrows from the origin.
 The function aims to scale the arrows such that the arrow head doesn't overlap with the unit circle or ellipse (depending on what subplot this function is called on).
 
 {% highlight julia linenos %}
@@ -237,8 +244,9 @@ plot_apple_unit_circle(ax, T)
 {% endhighlight %}
 ![apple_circle](/blog/visualize_svd_extra/apple_circle.png "Apple Amount Unit Circle")
 The coloring on this circle is not an obvious choice as of now, but when we see how the unit circle is mapped to an ellipse it will make more sense.
-The figure shows a unit circle describing the change in amount of apples. Lets say that the change in Gregarious Green apples is described by \\(\vec{a}_1\\) and the change in Reliable Red apples is described by \\(\vec{a}_2\\).  
+The figure shows a unit circle describing the change in amount of apples. Lets say that the change in Gregarious Green apples is described by \\(a_1^\ast\\) and the change in Reliable Red apples is described by \\(a_2^\ast\\).  
 At \\([1,0]\\), or on the point where the circle crosses the right side of the horizontal axis, the amount of Gregarious Green apples has increased by one while the amount of Reliable Red apples hasn't changed at all.
+We also see the right singular vectors, \\(\vec{v})
 
 Now lets write up a function that takes the unit circle and maps it to an ellipse using **T**:
 
@@ -299,15 +307,22 @@ plot_quality_ellipse(axs[2], T)
 
 Now the color coding hopefully makes more sense.
 Each color on the unit circle is mapped to the same color on the ellipse.  
-If we look at the purple color which \\(\vec{v}_2\\) points to on the unit circle, representing almost an equal increase in the amount of Gregarious Green and Reliable Red apples, we see that the purple color on the ellipse shows that the quality of recipe 1 (\\(\vec{q}_1\\)) decreases while the quality of recipe 2 (\\(\vec{q}_2\\)) increases.
+If we look at the purple color which \\(\vec{v}_2\\) points to on the unit circle, representing an increase in the amount of Gregarious Green and an equal decrease in Reliable Red apples, we see that the purple color on the ellipse shows that the quality of recipe 1 (\\(q_1\\)) decreases while the quality of recipe 2 (\\(q_2\\)) increases.
 
 John is very interested in decreasing the amount of Reliable Red apples in his recipes by 2 and increasing the amount of Gregarious Green apples by 4.
 We can think of this change as the vector \\(\vec{a}^\ast = [4.0, -2.0]\\), which we can normalize and place on the unit circle:
 
 ![svd_viz](/blog/visualize_svd_extra/svd_viz_w_vector.png "Johns specific change")
 
-John's change is now illustrated as a maroon arrow.
+John's proposed change is now illustrated as a maroon arrow.
 We can see that the effect John proposed increases the quality of recipe 2 but has no effect on recipe 1.
+
+Another idea John had was to decrease the amount the number of Reliable Red apples while keeping the number of Gregarious Green apples the same:
+
+
+![svd_viz](/blog/visualize_svd_extra/svd_viz_w_vector2.png "Johns change 2")
+
+We see that only decreasing the amount of Reliable Red apples decreases the quality of both recipes!
 
 John is now pretty sure he'll be able to use this SVD framework to analyze if he can change his recipes slightly while keeping the quality of his pie recipes consistent.
 
@@ -316,7 +331,8 @@ The notebook for all of the code can be found [<b>HERE</b>]({% post_url 2021-01-
 ## Final Words
 The Singular Value decomposition is a very powerful tool, and this is only one way I've thought of to interpret and visualize the results.
 This post is heavily inspired by [an article I wrote when in dr. Cory Simon's lab at Oregon State University](https://pubs.acs.org/doi/10.1021/acsami.9b16561)[^fn-sensing], in which this same interpretation was used to analyze the effectiveness of sensor arrays with metal-organic frameworks (MOFs).
-The visualizations went one step further than what I've shown here, so if you're interested in more ideas on how the SVD is applied, please take a look at that paper.
+The visualizations went one step further than what I've shown here, so if you're interested in more ideas on how the SVD is applied, please take a look at that paper.  
+Another aspect I looked at in the paper was the concept of the condition number of the matrix, which is outside of the scope of this blogpost.
 We published the code used for the paper on Github, and the link can be found in the article.
 
 [^fn-numlinalg]: Trefethen, Lloyd N., and David Bau III. Numerical linear algebra. Vol. 50. Siam, 1997.
