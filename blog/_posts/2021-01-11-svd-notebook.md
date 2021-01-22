@@ -90,8 +90,8 @@ function plot_apple_unit_circle(ax, T::Array{Float64, 2}; N::Int=250)
         ["\$\\mathbf{v}_1\$", "\$\\mathbf{v}_2\$"], 0.2)
     move_axes_to_origin(ax, [1.01 0.59; 0.55 0.97])
     ax.set_aspect("equal")
-    ax.set_xlabel("\$\\vec{a}_1^{*}\$", fontsize=20)
-    ax.set_ylabel("\$\\vec{a}_2^{*}\$", fontsize=20, rotation=0)
+    ax.set_xlabel("\$a_1^{*}\$", fontsize=20)
+    ax.set_ylabel("\$a_2^{*}\$", fontsize=20, rotation=0)
     ax.set_xticks([-1, 1])
     ax.set_xticklabels(ax.get_xticks(), fontsize=18)
     ax.set_yticks([-1, 1])
@@ -143,8 +143,8 @@ function plot_quality_ellipse(ax, T::Array{Float64, 2}; N::Int=250)
         ["\$\\mathbf{u}_1\$", "\$\\mathbf{u}_2\$"], 15.)
     move_axes_to_origin(ax, [1.01 0.60; 0.55 0.95])
     ax.set_aspect("equal")
-    ax.set_xlabel("\$\\vec{q}_1^{*}\$", fontsize=20)
-    ax.set_ylabel("\$\\vec{q}_2^{*}\$", fontsize=20, rotation=0)
+    ax.set_xlabel("\$q_1^{*}\$", fontsize=20)
+    ax.set_ylabel("\$q_2^{*}\$", fontsize=20, rotation=0)
     ax.set_xticks([-50, 50])
     ax.set_xticklabels(ax.get_xticks(), fontsize=18)
     ax.set_yticks([-50, 50])
@@ -161,7 +161,8 @@ end
 
 
 ```julia
-function make_svd_visualization(T::Array{Float64, 2}; extra_arrow::Union{Array{Float64, 1}, Missing}=missing)
+function make_svd_visualization(T::Array{Float64, 2}; extra_arrow::Union{Array{Float64, 1}, Missing}=missing,
+                                label_postfix="")
     fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(11, 5), 
                             gridspec_kw = Dict("top" => 1.0, "bottom" => 0.0))
 
@@ -169,23 +170,24 @@ function make_svd_visualization(T::Array{Float64, 2}; extra_arrow::Union{Array{F
     plot_quality_ellipse(axs[2], T)
     
     if ismissing(extra_arrow)
-        fig.savefig("svd_viz.png", transparent="true", format="png", dpi=300)
+        fig.savefig("svd_viz" * label_postfix * ".png", transparent="true", format="png", dpi=300)
     else
         extra_arrow = extra_arrow ./ norm(extra_arrow)
         extra_quality_arrow = T * extra_arrow
-        x_plot = extra_arrow .- 0.1 .* extra_arrow ./ norm.(extra_arrow)
+        x_plot = extra_arrow .- 0.1 .* extra_arrow ./ norm(extra_arrow)
         x_quality_plot = extra_quality_arrow .- 9 .* extra_quality_arrow ./ norm.(extra_quality_arrow)
         axs[1].arrow(0, 0, x_plot[1,1], x_plot[2,1], width=0.01, head_width=0.1,
                  head_length=0.1, fc="#800000", ec="#800000", zorder=10)
         axs[2].arrow(0, 0, x_quality_plot[1,1], x_quality_plot[2,1], width=1., head_width=9.,
                  head_length=9., fc="#800000", ec="#800000", zorder=10)
-        fig.savefig("svd_viz_w_vector.png", transparent="true", format="png", dpi=300)
+        fig.savefig("svd_viz_w_vector" * label_postfix * ".png", transparent="true", format="png", dpi=300)
     end
     return
 end
 T = [26. 74.; 66. 34.]
 make_svd_visualization(T)
 make_svd_visualization(T, extra_arrow=[4.,-2.])
+make_svd_visualization(T, extra_arrow=[0.,-2.], label_postfix="2")
 ```
 
 
@@ -199,3 +201,14 @@ make_svd_visualization(T, extra_arrow=[4.,-2.])
 ![png](/blog/visualize_svd_extra/svd_viz_w_vector.png)
     
 
+
+
+    
+![png](/blog/visualize_svd_extra/svd_viz_w_vector2.png)
+    
+
+
+
+```julia
+
+```
