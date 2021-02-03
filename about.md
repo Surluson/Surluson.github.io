@@ -24,7 +24,7 @@ My name is Árni Sturluson, a Chemical Engineering PhD with a passions for big d
 Born in Reykjavik, Iceland (1992)  
 **B.Sc. in Chemistry from University of Iceland (2012-2015)**  
 Moved to Corvallis Oregon (2016)  
-**Ph.D. in Chemical Engineering from University of Iceland (2016-2020)**  
+**Ph.D. in Chemical Engineering from Oregon State University (2016-2020)**  
 Moved to Reykjavik, Iceland again (2021)  
 
 
