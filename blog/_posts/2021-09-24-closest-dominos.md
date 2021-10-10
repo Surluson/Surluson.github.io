@@ -4,7 +4,7 @@ title: A home delivery optimization problem
 truncated_preview: true
 excerpt_separator: <!--more-->
 usemathjax: true
-published: true
+published: false
 ---
 
 ![apple_pie](/blog/visualize_svd_extra/apple_pie.png "A "great" looking apple pie")
