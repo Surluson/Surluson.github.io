@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_397b41450b3f43faac6ed8fd846ad8fd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_397b41450b3f43faac6ed8fd846ad8fd" ></div>
+        
+</body>
+<script>    
+    
+            var map_397b41450b3f43faac6ed8fd846ad8fd = L.map(
+                "map_397b41450b3f43faac6ed8fd846ad8fd",
+                {
+                    center: [0, 0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 1,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f00cd542fbb24d298eba9e0a771ea3c6 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+            var marker_95efd233375b4c6dafbd44f6f364d0f4 = L.marker(
+                [64.1141822, -21.8934586],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_07cbb88322094441a2595d0d47b300db = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5be8051f139446acb7617f430e80b678 = $(`<div id="html_5be8051f139446acb7617f430e80b678" style="width: 100.0%; height: 100.0%;">Nýbýlavegur</div>`)[0];
+            popup_07cbb88322094441a2595d0d47b300db.setContent(html_5be8051f139446acb7617f430e80b678);
+        
+
+        marker_95efd233375b4c6dafbd44f6f364d0f4.bindPopup(popup_07cbb88322094441a2595d0d47b300db)
+        ;
+
+        
+    
+    
+            marker_95efd233375b4c6dafbd44f6f364d0f4.bindTooltip(
+                `<div>
+                     Nýbýlavegur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c96bc91ae4f346e5a424b86866cb98fe = L.marker(
+                [64.0764244, -21.940992800000004],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_6babf5fb630149809331a703dc008695 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a10cb77822864ca087d308f4856de30c = $(`<div id="html_a10cb77822864ca087d308f4856de30c" style="width: 100.0%; height: 100.0%;">Flatahraun</div>`)[0];
+            popup_6babf5fb630149809331a703dc008695.setContent(html_a10cb77822864ca087d308f4856de30c);
+        
+
+        marker_c96bc91ae4f346e5a424b86866cb98fe.bindPopup(popup_6babf5fb630149809331a703dc008695)
+        ;
+
+        
+    
+    
+            marker_c96bc91ae4f346e5a424b86866cb98fe.bindTooltip(
+                `<div>
+                     Flatahraun
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2619fc7602c1432ca084cb033d39453d = L.marker(
+                [64.1492848, -21.8722922],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_9838e1542cfe4b6c91beebdd6f79f387 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2f17bbb86af742bba8ded8662dcbf531 = $(`<div id="html_2f17bbb86af742bba8ded8662dcbf531" style="width: 100.0%; height: 100.0%;">Dalbraut</div>`)[0];
+            popup_9838e1542cfe4b6c91beebdd6f79f387.setContent(html_2f17bbb86af742bba8ded8662dcbf531);
+        
+
+        marker_2619fc7602c1432ca084cb033d39453d.bindPopup(popup_9838e1542cfe4b6c91beebdd6f79f387)
+        ;
+
+        
+    
+    
+            marker_2619fc7602c1432ca084cb033d39453d.bindTooltip(
+                `<div>
+                     Dalbraut
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eee5b59a9c1849f79d7c4bb7ee579887 = L.marker(
+                [64.10148979999998, -21.873502799999997],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_3de7ee0a65df4130a286299169d4a22c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ed18862470ce4596bd53e7dd51240f3c = $(`<div id="html_ed18862470ce4596bd53e7dd51240f3c" style="width: 100.0%; height: 100.0%;">Skógarlind</div>`)[0];
+            popup_3de7ee0a65df4130a286299169d4a22c.setContent(html_ed18862470ce4596bd53e7dd51240f3c);
+        
+
+        marker_eee5b59a9c1849f79d7c4bb7ee579887.bindPopup(popup_3de7ee0a65df4130a286299169d4a22c)
+        ;
+
+        
+    
+    
+            marker_eee5b59a9c1849f79d7c4bb7ee579887.bindTooltip(
+                `<div>
+                     Skógarlind
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9bca38dc5af3430d97aa5e5a0745df09 = L.marker(
+                [64.166466, -21.696927000000002],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_3693e49e594148279c019f939534ac60 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_96a2130178244d6c924f99b7590aa20a = $(`<div id="html_96a2130178244d6c924f99b7590aa20a" style="width: 100.0%; height: 100.0%;">Háholt</div>`)[0];
+            popup_3693e49e594148279c019f939534ac60.setContent(html_96a2130178244d6c924f99b7590aa20a);
+        
+
+        marker_9bca38dc5af3430d97aa5e5a0745df09.bindPopup(popup_3693e49e594148279c019f939534ac60)
+        ;
+
+        
+    
+    
+            marker_9bca38dc5af3430d97aa5e5a0745df09.bindTooltip(
+                `<div>
+                     Háholt
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_19fe115009ae4744b28b929971617a5c = L.marker(
+                [64.1428054, -21.902140999999997],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_00af1baf9b7644f5bf0c0c3c2a2918de = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e10b0ce42f7a4b9a94a5bfcfcb63d8ae = $(`<div id="html_e10b0ce42f7a4b9a94a5bfcfcb63d8ae" style="width: 100.0%; height: 100.0%;">Nóatún</div>`)[0];
+            popup_00af1baf9b7644f5bf0c0c3c2a2918de.setContent(html_e10b0ce42f7a4b9a94a5bfcfcb63d8ae);
+        
+
+        marker_19fe115009ae4744b28b929971617a5c.bindPopup(popup_00af1baf9b7644f5bf0c0c3c2a2918de)
+        ;
+
+        
+    
+    
+            marker_19fe115009ae4744b28b929971617a5c.bindTooltip(
+                `<div>
+                     Nóatún
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17ed3c427ea5440ab56a1b0bbce6f4e5 = L.marker(
+                [64.1089119, -21.8178933],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_7063657f9331455185f9e0d6c286a45b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2b47b7cc4c8641e6a8ca7b5038f68bf2 = $(`<div id="html_2b47b7cc4c8641e6a8ca7b5038f68bf2" style="width: 100.0%; height: 100.0%;">Lóuhólar</div>`)[0];
+            popup_7063657f9331455185f9e0d6c286a45b.setContent(html_2b47b7cc4c8641e6a8ca7b5038f68bf2);
+        
+
+        marker_17ed3c427ea5440ab56a1b0bbce6f4e5.bindPopup(popup_7063657f9331455185f9e0d6c286a45b)
+        ;
+
+        
+    
+    
+            marker_17ed3c427ea5440ab56a1b0bbce6f4e5.bindTooltip(
+                `<div>
+                     Lóuhólar
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d2fa3bd8225c45f2a9f6f3ee58b7ebde = L.marker(
+                [64.1511644, -21.957918599999996],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_4392dd6dcd5e4a8fa08c7afd649f9157 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_425b29ae8a494cdf8c804868a3fb20be = $(`<div id="html_425b29ae8a494cdf8c804868a3fb20be" style="width: 100.0%; height: 100.0%;">Ánanaust</div>`)[0];
+            popup_4392dd6dcd5e4a8fa08c7afd649f9157.setContent(html_425b29ae8a494cdf8c804868a3fb20be);
+        
+
+        marker_d2fa3bd8225c45f2a9f6f3ee58b7ebde.bindPopup(popup_4392dd6dcd5e4a8fa08c7afd649f9157)
+        ;
+
+        
+    
+    
+            marker_d2fa3bd8225c45f2a9f6f3ee58b7ebde.bindTooltip(
+                `<div>
+                     Ánanaust
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28090b12ae014193a7c3d9814e917748 = L.marker(
+                [64.0905842, -21.842987600000008],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_0149ba68ee2c42abad6538194ac3a15c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c5635fa02b634a5d80a78f76c1d81e13 = $(`<div id="html_c5635fa02b634a5d80a78f76c1d81e13" style="width: 100.0%; height: 100.0%;">Rjúpnasalir</div>`)[0];
+            popup_0149ba68ee2c42abad6538194ac3a15c.setContent(html_c5635fa02b634a5d80a78f76c1d81e13);
+        
+
+        marker_28090b12ae014193a7c3d9814e917748.bindPopup(popup_0149ba68ee2c42abad6538194ac3a15c)
+        ;
+
+        
+    
+    
+            marker_28090b12ae014193a7c3d9814e917748.bindTooltip(
+                `<div>
+                     Rjúpnasalir
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9bf6c3dc489f4d98baef99b57a5213b2 = L.marker(
+                [64.1090505, -21.842145300000002],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_f5c0b2a6ab6c4ecaa174ac5fb4d7e7f8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1d155ae3398d425482c32f21b6c3e6bd = $(`<div id="html_1d155ae3398d425482c32f21b6c3e6bd" style="width: 100.0%; height: 100.0%;">Mjódd</div>`)[0];
+            popup_f5c0b2a6ab6c4ecaa174ac5fb4d7e7f8.setContent(html_1d155ae3398d425482c32f21b6c3e6bd);
+        
+
+        marker_9bf6c3dc489f4d98baef99b57a5213b2.bindPopup(popup_f5c0b2a6ab6c4ecaa174ac5fb4d7e7f8)
+        ;
+
+        
+    
+    
+            marker_9bf6c3dc489f4d98baef99b57a5213b2.bindTooltip(
+                `<div>
+                     Mjódd
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bb9c98c41dd44788979e7baac999f75b = L.marker(
+                [64.0466498, -21.9842921],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_ab63708809204751b08b8042ac1083dd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c91d90db313a42ac845841698d1930ec = $(`<div id="html_c91d90db313a42ac845841698d1930ec" style="width: 100.0%; height: 100.0%;">Norðurhella</div>`)[0];
+            popup_ab63708809204751b08b8042ac1083dd.setContent(html_c91d90db313a42ac845841698d1930ec);
+        
+
+        marker_bb9c98c41dd44788979e7baac999f75b.bindPopup(popup_ab63708809204751b08b8042ac1083dd)
+        ;
+
+        
+    
+    
+            marker_bb9c98c41dd44788979e7baac999f75b.bindTooltip(
+                `<div>
+                     Norðurhella
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c98dc139db14355a5bb567e5094f072 = L.marker(
+                [64.0884553, -21.919705399999998],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_40a1405be4fd4f0c9ecb6c4650d9f195 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d139d1ac706b493b8fcdef26af59750a = $(`<div id="html_d139d1ac706b493b8fcdef26af59750a" style="width: 100.0%; height: 100.0%;">Garðatorg</div>`)[0];
+            popup_40a1405be4fd4f0c9ecb6c4650d9f195.setContent(html_d139d1ac706b493b8fcdef26af59750a);
+        
+
+        marker_8c98dc139db14355a5bb567e5094f072.bindPopup(popup_40a1405be4fd4f0c9ecb6c4650d9f195)
+        ;
+
+        
+    
+    
+            marker_8c98dc139db14355a5bb567e5094f072.bindTooltip(
+                `<div>
+                     Garðatorg
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_159a70c4fad34196823339b6017e5db4 = L.marker(
+                [64.14534690000002, -21.9175277],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_d3bbef2f33434a2b80f75235534bbe1d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_54c49367b732446ca780cc411a2d22a4 = $(`<div id="html_54c49367b732446ca780cc411a2d22a4" style="width: 100.0%; height: 100.0%;">Skúlagata</div>`)[0];
+            popup_d3bbef2f33434a2b80f75235534bbe1d.setContent(html_54c49367b732446ca780cc411a2d22a4);
+        
+
+        marker_159a70c4fad34196823339b6017e5db4.bindPopup(popup_d3bbef2f33434a2b80f75235534bbe1d)
+        ;
+
+        
+    
+    
+            marker_159a70c4fad34196823339b6017e5db4.bindTooltip(
+                `<div>
+                     Skúlagata
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d3fe1f2c3fd747d591d84d5dd4aa9374 = L.marker(
+                [64.1176788, -21.796292100000002],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_f4a079e1023e42b69154291eeff57abf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c0d0fd89c1244d81af6b6836f41c81c4 = $(`<div id="html_c0d0fd89c1244d81af6b6836f41c81c4" style="width: 100.0%; height: 100.0%;">Hraunbær</div>`)[0];
+            popup_f4a079e1023e42b69154291eeff57abf.setContent(html_c0d0fd89c1244d81af6b6836f41c81c4);
+        
+
+        marker_d3fe1f2c3fd747d591d84d5dd4aa9374.bindPopup(popup_f4a079e1023e42b69154291eeff57abf)
+        ;
+
+        
+    
+    
+            marker_d3fe1f2c3fd747d591d84d5dd4aa9374.bindTooltip(
+                `<div>
+                     Hraunbær
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2eb1e78da33a40f7958f84980aba6b71 = L.marker(
+                [64.1507282, -21.788797900000002],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_57266a4cf7144ab48ec985ae5c67f33c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fd19f66d50bd43b7a5df80e76bc50094 = $(`<div id="html_fd19f66d50bd43b7a5df80e76bc50094" style="width: 100.0%; height: 100.0%;">Spöng</div>`)[0];
+            popup_57266a4cf7144ab48ec985ae5c67f33c.setContent(html_fd19f66d50bd43b7a5df80e76bc50094);
+        
+
+        marker_2eb1e78da33a40f7958f84980aba6b71.bindPopup(popup_57266a4cf7144ab48ec985ae5c67f33c)
+        ;
+
+        
+    
+    
+            marker_2eb1e78da33a40f7958f84980aba6b71.bindTooltip(
+                `<div>
+                     Spöng
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2dde030b2008484b8ab42b8f3390b92d = L.marker(
+                [64.1297286, -21.8937621],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_81a8555d25ca4a6da19a4bd03e055f65 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ce0523073ef04725b005763444a83bbe = $(`<div id="html_ce0523073ef04725b005763444a83bbe" style="width: 100.0%; height: 100.0%;">Kringlan</div>`)[0];
+            popup_81a8555d25ca4a6da19a4bd03e055f65.setContent(html_ce0523073ef04725b005763444a83bbe);
+        
+
+        marker_2dde030b2008484b8ab42b8f3390b92d.bindPopup(popup_81a8555d25ca4a6da19a4bd03e055f65)
+        ;
+
+        
+    
+    
+            marker_2dde030b2008484b8ab42b8f3390b92d.bindTooltip(
+                `<div>
+                     Kringlan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2cd099aed071460d846413426974565b = L.marker(
+                [64.141583, -21.9615328],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_9f8552bacaae4affb1418f64022692ed = L.popup({"maxWidth": "100%"});
+
+        
+            var html_895b09cf0a2d470baf6e290c446241a3 = $(`<div id="html_895b09cf0a2d470baf6e290c446241a3" style="width: 100.0%; height: 100.0%;">Hjarðarhagi</div>`)[0];
+            popup_9f8552bacaae4affb1418f64022692ed.setContent(html_895b09cf0a2d470baf6e290c446241a3);
+        
+
+        marker_2cd099aed071460d846413426974565b.bindPopup(popup_9f8552bacaae4affb1418f64022692ed)
+        ;
+
+        
+    
+    
+            marker_2cd099aed071460d846413426974565b.bindTooltip(
+                `<div>
+                     Hjarðarhagi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_94e9e0cb096b4800bf6f6029e9ef559f = L.marker(
+                [64.1303178, -21.870618399999998],
+                {}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+        var popup_ff9e72ec41c64f7a83a2dfc3111a429f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f1544480106e407b8f85d66681810912 = $(`<div id="html_f1544480106e407b8f85d66681810912" style="width: 100.0%; height: 100.0%;">Skeifan</div>`)[0];
+            popup_ff9e72ec41c64f7a83a2dfc3111a429f.setContent(html_f1544480106e407b8f85d66681810912);
+        
+
+        marker_94e9e0cb096b4800bf6f6029e9ef559f.bindPopup(popup_ff9e72ec41c64f7a83a2dfc3111a429f)
+        ;
+
+        
+    
+    
+            marker_94e9e0cb096b4800bf6f6029e9ef559f.bindTooltip(
+                `<div>
+                     Skeifan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var rectangle_09fc6e80bbc84e2d9298bd0a339c18ce = L.rectangle(
+                [[64.02932, -22.02853], [64.17657, -21.6734389]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_397b41450b3f43faac6ed8fd846ad8fd);
+        
+    
+            map_397b41450b3f43faac6ed8fd846ad8fd.fitBounds(
+                [[64.02932, -22.02853], [64.17657, -21.6734389]],
+                {}
+            );
+        
+</script>
