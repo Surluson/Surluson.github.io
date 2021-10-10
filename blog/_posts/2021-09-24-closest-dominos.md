@@ -4,7 +4,7 @@ title: A home delivery optimization problem
 truncated_preview: true
 excerpt_separator: <!--more-->
 usemathjax: true
-published: false
+published: true
 ---
 
 ![apple_pie](/blog/visualize_svd_extra/apple_pie.png "A "great" looking apple pie")
@@ -44,6 +44,7 @@ One restaurant was completely missing from the data while one restaurant which h
 To work with the geodata I used a library called [OpenStreetMapX.jl](https://github.com/pszufe/OpenStreetMapX.jl) in Julia, which converts the geodata into a graph that I can exploit using various algorithms.
 
 ## The Reykjavik Graph
+
 The capital area consists of 7 municipals, but for this project I will ignore one completely (Kjósarhreppur) and another partially (Mosfellsbær).
 The reason being that Kjósarhreppur exists far away from what people would regularly call the city limits, and there is not an interesting road network compared to the densely populated area that I will consider.
 The part of Mosfellsbær that I omitted was mostly an error on my part, but when I shrunk the scope of the geodata I accidentally skipped one neighborhood, but simple reasoning can be used to extrapolate the information I gather to that specific neighborhood.
@@ -53,4 +54,7 @@ One issue I ran into was that the Domino's locations were not usually a part of 
 Without increasing the scope of my project significantly, I got rid of all nodes and edges that did not belong to the road network, but prior to that I located the road network nodes that were closest to the Domino's locations and marked them.
 That way I was able to get rid of a significant portion of the nodes while still keeping a good estimate of where the Domino's locations were.
 
-{% include dominos_locations.html %}
+<div>
+    <iframe src="https://surluson.github.io/map.html" height="560" width="560" allowfullscreen="" frameborder="0">
+    </iframe>
+</div>
